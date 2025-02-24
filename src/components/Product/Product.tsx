@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFetchAllProduct } from "../../logic/query/getAllProducts";
-import { List, Card, Button, InputNumber, message } from "antd";
+import { List, Card, Button, InputNumber } from "antd";
 import { usePostNewOrder } from "../../logic/mutation/createOrder";
 
 const Product = () => {
@@ -29,6 +29,7 @@ const Product = () => {
     };
 
     const response = await newOrderMutate.mutateAsync([body]);
+    console.log("response", response);
   };
 
   return (

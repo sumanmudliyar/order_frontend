@@ -1,5 +1,4 @@
 import * as styled from "./style";
-import image from "../../assets/image/logo.png";
 import Rupee from "../../assets/svg/Rupee";
 
 interface fooditem_props {

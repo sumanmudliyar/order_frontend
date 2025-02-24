@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { List, Button, Typography, Select } from "antd";
 import { useUpdateOrder } from "../../logic/mutation/updateOrder";
-import { useFetchAllOrder } from "../../logic/query/getAllOrders";
 import { useNavigate } from "react-router-dom";
 import { useFetchAllOrderForPartner } from "../../logic/query/getAllOrdersForPartner";
 
@@ -53,6 +52,7 @@ const Delivery = () => {
       deliveryStatus: selectedStatuses[orderId],
     };
     const response = await updateOrderMutate.mutateAsync([orderId, body]);
+    console.log("repsonse", response);
     refetchAllOrder();
     // setOrders((prevOrders) =>
     //   prevOrders.map((order) =>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -72,7 +72,7 @@ const OrderLocation = () => {
 
     const response = await updateOrderMutate.mutateAsync([orderid, body]);
 
-    console.log(position);
+    console.log("response", response);
   };
 
   return (

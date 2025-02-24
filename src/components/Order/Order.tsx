@@ -22,8 +22,10 @@ const Order = () => {
 
   const [selectedFilterStatus, setselectedFilterStatus] = useState("all");
 
-  const { data: initialOrders, refetch: refetchInitialOrder } =
-    useFetchAllOrder(selectedFilterStatus, userid); // Fetch initial orders
+  const { data: initialOrders } = useFetchAllOrder(
+    selectedFilterStatus,
+    userid
+  ); // Fetch initial orders
   //   const [orders, setOrders] = useState(initialOrders || []);
 
   //   useEffect(() => {
@@ -35,11 +37,6 @@ const Order = () => {
   useEffect(() => {
     setUpdatedOrders(initialOrders || []);
   }, [initialOrders]);
-
-  const handleCancel = (orderId: number) => {
-    console.log(`Cancel order: ${orderId}`);
-    // Add cancel API logic here
-  };
 
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:4000"); // Connect to WebSocket server

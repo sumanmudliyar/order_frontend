@@ -2,7 +2,6 @@ import Delivery from "../../components/Delivery/Delivery";
 import Order from "../../components/Order/Order";
 import Product from "../../components/Product/Product";
 import { Tabs } from "antd";
-import OrderLocation from "../Map/Map";
 
 const Home = () => {
   const role = localStorage.getItem("role"); // Get role from localStorage

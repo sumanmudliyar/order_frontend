@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "react-query";
+import { useMutation } from "react-query";
 import axiosInstance from "../../utilities/axiosInstance";
 
 const getTabItem = async (params: [any]) => {

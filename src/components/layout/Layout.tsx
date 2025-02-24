@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import * as sharedStyled from "../../style/sharedStyle";
 
 import Header from "../Header/Header";
