@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useFetchAllProduct } from "../../logic/query/getAllProducts";
 import { List, Card, Button, InputNumber } from "antd";
 import { usePostNewOrder } from "../../logic/mutation/createOrder";
+import { toast } from "react-toastify";
 
 const Product = () => {
   const { data: allProduct } = useFetchAllProduct();
@@ -29,7 +30,23 @@ const Product = () => {
     };
 
     const response = await newOrderMutate.mutateAsync([body]);
-    console.log("response", response);
+    if (response.data.error) {
+      toast.error(response.data.error, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    } else {
+      toast.success("order has placed.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    }
   };
 
   return (
