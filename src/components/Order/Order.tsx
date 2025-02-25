@@ -39,7 +39,7 @@ const Order = () => {
   }, [initialOrders]);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:4000"); // Connect to WebSocket server
+    const socket = new WebSocket("https://test.we-matter.xyz"); // Connect to WebSocket server
 
     socket.onopen = () => {
       console.log("WebSocket Connected");

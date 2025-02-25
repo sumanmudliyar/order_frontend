@@ -11,6 +11,7 @@ import L from "leaflet";
 import { Button } from "antd";
 import { useUpdateOrder } from "../../logic/mutation/updateOrder";
 import { useFetchOrder } from "../../logic/query/getOrder";
+import { toast } from "react-toastify";
 
 // Fix missing marker icon issue in Leaflet
 const markerIcon = new L.Icon({
@@ -72,7 +73,23 @@ const OrderLocation = () => {
 
     const response = await updateOrderMutate.mutateAsync([orderid, body]);
 
-    console.log("response", response);
+    if (response.data.error) {
+      toast.error(response.data.error, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    } else {
+      toast.success("Location has updated.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    }
   };
 
   return (
@@ -90,9 +107,13 @@ const OrderLocation = () => {
       </MapContainer>
 
       {role == "delivery" && (
-        <Button type="primary" onClick={() => handleUpdateLocation()}>
-          Update location
-        </Button>
+        <>
+          <label>click on map to select location</label>
+          <br />
+          <Button type="primary" onClick={() => handleUpdateLocation()}>
+            Update location
+          </Button>
+        </>
       )}
     </>
   );
